@@ -1,0 +1,5 @@
+[target.armv7-unknown-linux-musleabihf]
+linker = "armv7-unknown-linux-musleabihf-gcc"
+
+[build]
+target = "armv7-unknown-linux-musleabihf"

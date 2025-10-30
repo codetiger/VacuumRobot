@@ -1,12 +1,14 @@
 # A33 to GD32F103 Communication Protocol - Reverse Engineering
 
+**NOTE**: See `Research/Software/Firmware/auxctrl-rust/GD32_PROTOCOL_FINAL.md` for the verified, working protocol specification based on serial MITM capture.
+
 ## Config & Static Analysis of Binary
 
 - **Identified Devices**:
   - `/dev/ttyS0` - UART0
-  - `/dev/ttyS1` - **Primary A33↔GD32 communication** (used by AuxCtrl)
+  - `/dev/ttyS1` - Initially thought to be primary (INCORRECT)
   - `/dev/ttyS2` - Console (115200 baud)
-  - `/dev/ttyS3` - Secondary communication (also referenced by AuxCtrl)
+  - `/dev/ttyS3` - **PRIMARY A33↔GD32 communication** (VERIFIED via serial MITM)
 
 ## Software Architecture
 ```
@@ -19,7 +21,7 @@ Monitor (supervisor)
 
 **Key Binary**: `/usr/sbin/AuxCtrl` - This is the primary process managing communication with the GD32F103
 
-## Step 1 - Binary Decompiling
+## Binary Decompiling
 
 I am going to skip any info about how to decompile the binary in this article. There are lot of places you can get good information about this. Am going to focus on what I've found. 
 
@@ -39,9 +41,11 @@ I am going to skip any info about how to decompile the binary in this article. T
 
 The AuxCtrl binary references multiple serial ports:
 
-- **Primary**: `/dev/ttyS1` - Main A33↔GD32 communication
-- **Secondary**: `/dev/ttyS3` - Also monitored by AuxCtrl
+- **Primary**: `/dev/ttyS3` - Main A33↔GD32 communication (VERIFIED)
+- **Secondary**: `/dev/ttyS1` - Initially thought to be primary (INCORRECT)
 - **Tertiary**: `/dev/ttyS0` - Alternative port (referenced but may not be used)
+
+**UPDATE**: Serial MITM capture proved `/dev/ttyS3` is the actual communication port with GD32.
 
 ### Baud Rate Configuration
 

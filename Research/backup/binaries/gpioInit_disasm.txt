@@ -1,0 +1,69 @@
+
+AuxCtrl:	file format elf32-littlearm
+
+Disassembly of section PT_LOAD#3:
+
+00010000 <PT_LOAD#3>:
+   15847: 043e5800     	ldrteq	r5, [lr], #-2048
+   1584b: 00003000     	andeq	r3, r0, r0
+   1584f: 0b002200     	bleq	0x1e057 <PT_LOAD#3+0xe057> @ imm = #0x8800
+   15853: 005dc100     	subseq	r12, sp, r0, lsl #2
+   15857: 063ca400     	ldrteq	r10, [r12], -r0, lsl #8
+   1585b: 00002400     	andeq	r2, r0, r0, lsl #8
+   1585f: 0b002200     	bleq	0x1e067 <PT_LOAD#3+0xe067> @ imm = #0x8800
+   15863: 005dfa00     	subseq	pc, sp, r0, lsl #20
+   15867: 055b6c00     	ldrbeq	r6, [r11, #-0xc00]
+   1586b: 00006c00     	andeq	r6, r0, r0, lsl #24
+   1586f: 0b001200     	bleq	0x1a077 <PT_LOAD#3+0xa077> @ imm = #0x4800
+   15873: 005e3200     	subseq	r3, lr, r0, lsl #4
+   15877: 06602400     	strbteq	r2, [r0], -r0, lsl #8
+   1587b: 00002800     	andeq	r2, r0, r0, lsl #16
+   1587f: 0b002200     	bleq	0x1e087 <PT_LOAD#3+0xe087> @ imm = #0x8800
+   15883: 005e3f00     	subseq	r3, lr, r0, lsl #30
+   15887: 048c4c00     	streq	r4, [r12], #3072
+   1588b: 00005c00     	andeq	r5, r0, r0, lsl #24
+   1588f: 0b002200     	bleq	0x1e097 <PT_LOAD#3+0xe097> @ imm = #0x8800
+   15893: 005e7600     	subseq	r7, lr, r0, lsl #12
+   15897: 06993000     	ldreq	r3, [r9], r0
+   1589b: 00002b00     	andeq	r2, r0, r0, lsl #22
+   1589f: 0d001100     	stceq	p1, c1, [r0, #-0]
+   158a3: 005ea500     	subseq	r10, lr, r0, lsl #10
+   158a7: 05b5b800     	ldreq	r11, [r5, #0x800]!
+   158ab: 00002800     	andeq	r2, r0, r0, lsl #16
+   158af: 0b002200     	bleq	0x1e0b7 <PT_LOAD#3+0xe0b7> @ imm = #0x8800
+   158b3: 005f3a00     	subseq	r3, pc, r0, lsl #20
+   158b7: 059bdc00     	ldreq	sp, [r11, #0xc00]
+   158bb: 00007c00     	andeq	r7, r0, r0, lsl #24
+   158bf: 0b001200     	bleq	0x1a0c7 <PT_LOAD#3+0xa0c7> @ imm = #0x4800
+   158c3: 005f6c00     	subseq	r6, pc, r0, lsl #24
+   158c7: 05395000     	ldreq	r5, [r9, #-0x0]!
+   158cb: 00005000     	andeq	r5, r0, r0
+   158cf: 0b002200     	bleq	0x1e0d7 <PT_LOAD#3+0xe0d7> @ imm = #0x8800
+   158d3: 005fba00     	subseq	r11, pc, r0, lsl #20
+   158d7: 0663d800     	strbteq	sp, [r3], -r0, lsl #16
+   158db: 00004c00     	andeq	r4, r0, r0, lsl #24
+   158df: 0b002200     	bleq	0x1e0e7 <PT_LOAD#3+0xe0e7> @ imm = #0x8800
+   158e3: 000cad00     	andeq	r10, r12, r0, lsl #26
+		...
+   158ef: 00001200     	andeq	r1, r0, r0, lsl #4
+   158f3: 00601c00     	rsbeq	r1, r0, r0, lsl #24
+   158f7: 0417bc00     	ldreq	r11, [r7], #-3072
+   158fb: 00007c00     	andeq	r7, r0, r0, lsl #24
+   158ff: 0b002200     	bleq	0x1e107 <PT_LOAD#3+0xe107> @ imm = #0x8800
+   15903: 00602d00     	rsbeq	r2, r0, r0, lsl #26
+   15907: 05a25800     	streq	r5, [r2, #0x800]!
+   1590b: 00003400     	andeq	r3, r0, r0, lsl #8
+   1590f: 0b002200     	bleq	0x1e117 <PT_LOAD#3+0xe117> @ imm = #0x8800
+   15913: 00605200     	rsbeq	r5, r0, r0, lsl #4
+   15917: 0434d800     	ldrteq	sp, [r4], #-2048
+   1591b: 00004800     	andeq	r4, r0, r0, lsl #16
+   1591f: 0b002200     	bleq	0x1e127 <PT_LOAD#3+0xe127> @ imm = #0x8800
+   15923: 00607f00     	rsbeq	r7, r0, r0, lsl #30
+   15927: 067e6400     	ldrbteq	r6, [lr], -r0, lsl #8
+   1592b: 00006c00     	andeq	r6, r0, r0, lsl #24
+   1592f: 0b002200     	bleq	0x1e137 <PT_LOAD#3+0xe137> @ imm = #0x8800
+   15933: 00609e00     	rsbeq	r9, r0, r0, lsl #28
+   15937: 04301800     	ldrteq	r1, [r0], #-2048
+   1593b: 00002400     	andeq	r2, r0, r0, lsl #8
+   1593f: 0b002200     	bleq	0x1e147 <PT_LOAD#3+0xe147> @ imm = #0x8800
+   15943: 0060ee00     	rsbeq	lr, r0, r0, lsl #28

@@ -1,0 +1,18 @@
+#!/bin/sh
+#
+# GD32 Boot Test - runs BEFORE AuxCtrl
+#
+
+case "$1" in
+  start)
+    echo "Starting GD32 boot test..."
+    /tmp/boot_test_gd32.sh &
+    ;;
+  stop)
+    ;;
+  *)
+    echo "Usage: $0 {start|stop}"
+    exit 1
+esac
+
+exit 0

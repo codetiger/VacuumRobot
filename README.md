@@ -16,10 +16,13 @@ Reverse engineering project for the 3irobotix CRL-200S robotic vacuum cleaner. T
 - Real-time Lidar visualization tool (Python)
 - Main motherboard component identification
 - Connector pinout mapping and documentation
+- A33-GD32F103 communication protocol reverse engineered
+- Original firmware binary analysis (AuxCtrl process)
+- Device access methods (SSH, debug mode) documented
 
 ### 🔄 In Progress
 - Detailed circuit analysis and tracing
-- Communication protocol analysis between MCU and main CPU
+- Complete command ID mapping for MCU protocol
 
 ### 📋 Planned
 - Firmware development for GD32F1 MCU
@@ -42,6 +45,9 @@ The 3irobotix CRL-200S uses a dual-processor architecture:
 
 1. [Lidar Sensor Analysis](/Research/Lidar/README.md) - Protocol specification, pinout, and visualization tool
 2. [Motherboard Analysis](/Research/Motherboard/README.md) - Component identification, connector mapping, and circuit analysis
+3. [GD32F1 MCU Protocol](/Research/GD32F1/README.md) - Communication protocol between A33 and GD32F103
+   - [Detailed Protocol Analysis](/Research/GD32F1/A33-GD32-Protocol.md) - Binary reverse engineering, packet structure, command IDs
+4. [Software & Firmware Analysis](/Research/Software/README.md) - Original firmware analysis, system architecture, and device access methods
 
 ## Tools
 
@@ -60,6 +66,14 @@ pip install pyserial matplotlib
 3. Run: `python Research/Lidar/scan.py`
 
 The tool displays a real-time polar plot showing distance measurements at 360 degrees.
+
+### Debug Mode
+To enable extended debugging and logging:
+1. Create file `/mnt/UDISK/debug_mode` on the device
+2. Reboot or restart the Monitor process
+3. Logs will be written to `/mnt/UDISK/log/`
+
+See [Software Analysis](/Research/Software/README.md) for more details on the system architecture.
 
 ## Contributing
 

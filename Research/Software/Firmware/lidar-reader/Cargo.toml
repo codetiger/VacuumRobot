@@ -1,0 +1,12 @@
+[package]
+name = "lidar-reader"
+version = "0.1.0"
+edition = "2021"
+
+[dependencies]
+serialport = "4.2"
+sysfs_gpio = "0.6"
+
+[[example]]
+name = "scan"
+path = "examples/scan.rs"
