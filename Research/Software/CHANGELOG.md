@@ -151,8 +151,22 @@ This document chronicles the journey of reverse-engineering the communication pr
 ## Current Status
 
 ✅ **VERIFIED WORKING PROTOCOL**
-- Documentation: `GD32_PROTOCOL_FINAL.md`
-- Implementation: `auxctrl-rust/` library
-- Confidence: High (based on successful communication)
+- **Documentation**: **[GD32_PROTOCOL_FINAL.md](GD32_PROTOCOL_FINAL.md)** - Complete verified specification
+- **Implementation**: **[auxctrl-rust/](Firmware/auxctrl-rust/README.md)** - Rust library with working code
+- **Confidence**: High (based on successful communication and serial MITM capture)
 
 The protocol is now fully understood and successfully implemented.
+
+---
+
+## Related Documentation
+
+- **[GD32 Protocol - VERIFIED](GD32_PROTOCOL_FINAL.md)** - Complete protocol specification
+- **[Serial MITM Approach](SERIAL_MITM_APPROACH.md)** - How we captured the traffic
+- **[Test Results](TEST_RESULTS.md)** - What worked and what didn't
+- **[AuxCtrl Binary Details](AuxCtrl-Details.md)** - Original binary analysis
+- **[CRC Algorithm Discovery](../GD32F1/CRC-Algorithm-Discovery.md)** - Checksum reverse engineering
+- **[Hardware Connections](../Motherboard/Connection_Evidence.md)** - Physical layer evidence
+
+### Historical Documents (Outdated)
+- [Research/backup/Analysis/](../backup/README.md) - Contains outdated research files with warnings

@@ -1,6 +1,29 @@
-# Firmware Reverse Engineerring
+# Software & Firmware Analysis
 
-## Gain Access the Linux system
+This directory contains analysis of the original firmware, system architecture, and tools for protocol reverse engineering.
+
+## Quick Links
+
+### Protocol Documentation (VERIFIED)
+- **[GD32 Protocol - VERIFIED](GD32_PROTOCOL_FINAL.md)** ⭐ - Complete verified protocol specification (RECOMMENDED)
+- **[Protocol Discovery Changelog](CHANGELOG.md)** - Evolution of understanding through 5 phases
+- **[Serial MITM Approach](SERIAL_MITM_APPROACH.md)** - PTY-based protocol capture methodology
+- **[Serial Logging Guide](SERIAL_LOGGING.md)** - Tools and techniques for packet capture
+- **[Test Results](TEST_RESULTS.md)** - Protocol testing outcomes
+
+### Binary Analysis
+- **[AuxCtrl Details](AuxCtrl-Details.md)** - Deep analysis of the AuxCtrl process
+- **[Initial Protocol Analysis](../GD32F1/A33-GD32-Protocol.md)** - Binary reverse engineering (contains some outdated info)
+- **[CRC Algorithm Discovery](../GD32F1/CRC-Algorithm-Discovery.md)** - XOR checksum reverse engineering
+
+### Firmware Implementation
+- **[Firmware Projects](Firmware/README.md)** - Rust-based firmware for Allwinner A33
+  - [AuxCtrl-Rust](Firmware/auxctrl-rust/README.md) - Open-source GD32 communication library
+  - [Lidar Reader](Firmware/lidar-reader/README.md) - Rust library for 3iRobotix Delta-2D Lidar
+
+---
+
+## Gaining Access to the Linux System
 
 The device runs ADB (Android Debug Bridge) tools that allows us to communicate with the device. Though this feature is enabled by default, in production mode the device disconnects within seconds after connecting. 
 

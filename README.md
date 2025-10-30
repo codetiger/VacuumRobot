@@ -43,11 +43,30 @@ The 3irobotix CRL-200S uses a dual-processor architecture:
 
 ## Documentation
 
-1. [Lidar Sensor Analysis](/Research/Lidar/README.md) - Protocol specification, pinout, and visualization tool
-2. [Motherboard Analysis](/Research/Motherboard/README.md) - Component identification, connector mapping, and circuit analysis
-3. [GD32F1 MCU Protocol](/Research/GD32F1/README.md) - Communication protocol between A33 and GD32F103
-   - [Detailed Protocol Analysis](/Research/GD32F1/A33-GD32-Protocol.md) - Binary reverse engineering, packet structure, command IDs
-4. [Software & Firmware Analysis](/Research/Software/README.md) - Original firmware analysis, system architecture, and device access methods
+### Hardware Documentation
+1. **[Lidar Sensor Analysis](/Research/Lidar/README.md)** - Protocol specification, pinout, and visualization tool
+2. **[Motherboard Analysis](/Research/Motherboard/README.md)** - Component identification, connector mapping, and circuit analysis
+   - [Component Diagram](/Research/Motherboard/Component_Diagram.md) - Detailed component identification and connections
+   - [Connection Evidence](/Research/Motherboard/Connection_Evidence.md) - A33-GD32 hardware connection analysis
+
+### Protocol & Communication
+3. **[GD32F1 MCU Protocol](/Research/GD32F1/README.md)** - Communication protocol between A33 and GD32F103
+   - **[GD32 Protocol - VERIFIED](/Research/Software/GD32_PROTOCOL_FINAL.md)** ⭐ - Complete verified protocol specification (RECOMMENDED)
+   - [Protocol Discovery Changelog](/Research/Software/CHANGELOG.md) - Evolution of understanding through 5 phases
+   - [CRC Algorithm Discovery](/Research/GD32F1/CRC-Algorithm-Discovery.md) - XOR checksum reverse engineering
+   - [Initial Protocol Analysis](/Research/GD32F1/A33-GD32-Protocol.md) - Binary reverse engineering (contains outdated info, see notes)
+
+### Software & Firmware
+4. **[Software & Firmware Analysis](/Research/Software/README.md)** - Original firmware analysis, system architecture, and device access methods
+   - [AuxCtrl Binary Details](/Research/Software/AuxCtrl-Details.md) - Deep analysis of the AuxCtrl process
+   - [Serial MITM Approach](/Research/Software/SERIAL_MITM_APPROACH.md) - PTY-based protocol capture method
+   - [Serial Logging Guide](/Research/Software/SERIAL_LOGGING.md) - Tools and techniques for packet capture
+   - [Test Results](/Research/Software/TEST_RESULTS.md) - Protocol testing outcomes
+
+### Firmware Implementation
+5. **[Firmware Projects](/Research/Software/Firmware/README.md)** - Rust-based firmware for Allwinner A33
+   - [AuxCtrl-Rust](/Research/Software/Firmware/auxctrl-rust/README.md) - Open-source GD32 communication library
+   - [Lidar Reader](/Research/Software/Firmware/lidar-reader/README.md) - Rust library for 3iRobotix Delta-2D Lidar
 
 ## Tools
 

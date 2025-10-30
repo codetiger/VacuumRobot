@@ -21,12 +21,12 @@ This library replaces the proprietary `AuxCtrl` binary with a clean, open-source
 ┌──────────────────────────────────────┐
 │       Allwinner A33 (Tina Linux)     │
 │                                      │
-│  ┌────────────┐    ┌──────────────┐ │
-│  │ auxctrl-   │    │  Lidar       │ │
-│  │ rust       │────│  Reader      │ │
-│  └─────┬──────┘    └──────┬───────┘ │
-│        │                  │         │
-└────────┼──────────────────┼─────────┘
+│  ┌────────────┐    ┌──────────────┐  │
+│  │ auxctrl-   │    │  Lidar       │  │
+│  │ rust       │────│  Reader      │  │
+│  └─────┬──────┘    └──────┬───────┘  │
+│        │                  │          │
+└────────┼──────────────────┼──────────┘
          │                  │
          │ /dev/ttyS3       │ /dev/ttyS1
          │ 115200 baud      │ 115200 baud
@@ -149,16 +149,24 @@ See `src/gd32/commands.rs` for complete list (25+ commands).
 
 This implementation is based on extensive reverse engineering documented in:
 
-- `Research/GD32F1/CRC-Algorithm-Discovery.md` - CRC algorithm
-- `Research/backup/Analysis/GD32_Init_Sequence.md` - Initialization
-- `Research/backup/Analysis/Sensor_Architecture.md` - System architecture
-- `Research/backup/Analysis/analyze_capture.py` - Command IDs
+### Primary Documentation (Verified)
+- **[GD32 Protocol - VERIFIED](../../GD32_PROTOCOL_FINAL.md)** ⭐ - Complete verified protocol specification
+- **[Protocol Discovery Changelog](../../CHANGELOG.md)** - Evolution of understanding through 5 phases
+- **[Serial MITM Approach](../../SERIAL_MITM_APPROACH.md)** - PTY-based protocol capture methodology
+- **[CRC Algorithm Discovery](../../../GD32F1/CRC-Algorithm-Discovery.md)** - XOR checksum reverse engineering
+- **[Test Results](../../TEST_RESULTS.md)** - Protocol testing outcomes
 
-Key findings:
+### Supporting Documentation
+- **[AuxCtrl Binary Details](../../AuxCtrl-Details.md)** - Deep analysis of the AuxCtrl process
+- **[Initial Protocol Analysis](../../../GD32F1/A33-GD32-Protocol.md)** - Binary reverse engineering (contains some outdated info)
+- **[Hardware Connections](../../../Motherboard/Connection_Evidence.md)** - A33-GD32 physical connections
+
+Key findings (CORRECTED):
 - Protocol uses simple XOR checksum (not CRC16/32)
-- GD32 operates autonomously, doesn't send UART responses
-- Status communicated via GPIO pins
-- First command must be 0x66 (initialization)
+- **GD32 DOES respond** with CMD=0x15 status packets (bidirectional communication)
+- Serial port: `/dev/ttyS3` (not `/dev/ttyS1`)
+- Initialization: CMD=0x08 (repeated for ~5 seconds)
+- Heartbeat: CMD=0x66 (every 20-50ms)
 
 ## Testing Results
 
@@ -172,20 +180,3 @@ Expected behavior when running test program:
 6. ✅ gpio-39 may change state
 7. ✅ No kernel errors in `dmesg`
 
-## Next Steps
-
-1. **Validate motor commands** - Observe physical movement when sending motor_speed()
-2. **Lidar integration** - Integrate with lidar-reader library
-3. **GPIO monitoring** - Read gpio-39 for obstacle detection
-4. **Higher-level API** - Add navigation primitives (move_forward, turn_left, etc.)
-5. **Robot application** - Build autonomous navigation system
-
-## License
-
-Open source - Use freely for research and development
-
-## Contributing
-
-This is a research/reverse engineering project. Contributions welcome!
-
-See parent project: `/Users/codetiger/Development/VacuumRobot`

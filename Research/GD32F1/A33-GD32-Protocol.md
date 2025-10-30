@@ -1,6 +1,16 @@
 # A33 to GD32F103 Communication Protocol - Reverse Engineering
 
-**NOTE**: See `Research/Software/Firmware/auxctrl-rust/GD32_PROTOCOL_FINAL.md` for the verified, working protocol specification based on serial MITM capture.
+**⚠️ IMPORTANT**: This document contains initial analysis with some INCORRECT information.
+
+**For the verified, working protocol specification, see:**
+- **[GD32 Protocol - VERIFIED](../Software/GD32_PROTOCOL_FINAL.md)** ⭐ - Complete verified protocol (RECOMMENDED)
+- **[Protocol Discovery Changelog](../Software/CHANGELOG.md)** - How we corrected these initial assumptions
+
+**Key Corrections**:
+- Serial port: `/dev/ttyS3` (NOT `/dev/ttyS1` as stated below)
+- Communication: Bidirectional (GD32 DOES respond with CMD=0x15)
+- CMD 0x08: Initialization/wakeup (NOT SetIMUZero)
+- CMD 0x66: Heartbeat (NOT motor velocity)
 
 ## Config & Static Analysis of Binary
 

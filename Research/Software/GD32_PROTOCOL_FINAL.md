@@ -1,9 +1,16 @@
 # GD32F103 Communication Protocol - Final Verified Documentation
 
-**Status**: VERIFIED via Serial MITM Capture
+**Status**: ✅ VERIFIED via Serial MITM Capture
 **Last Updated**: 2025-10-30
 
 This document represents the final, verified protocol specification between the Allwinner A33 (running AuxCtrl) and the GD32F103 microcontroller, based on successful bidirectional communication capture and working Rust implementation.
+
+## Quick Navigation
+- [How We Discovered This](CHANGELOG.md) - Evolution through 5 phases of research
+- [How to Implement](Firmware/auxctrl-rust/README.md) - Rust library and examples
+- [How to Capture Traffic](SERIAL_MITM_APPROACH.md) - Serial MITM technique
+- [Test Results](TEST_RESULTS.md) - What worked and what didn't
+- [Hardware Connections](../Motherboard/Connection_Evidence.md) - Physical layer evidence
 
 ## 1. Physical Layer
 
@@ -188,10 +195,28 @@ A custom serial MITM proxy was developed to capture the protocol:
 
 ## References
 
-- Serial MITM documentation: `SERIAL_MITM_APPROACH.md`
-- Binary analysis: `Research/Software/AuxCtrl-Details.md`
-- Original protocol notes: `Research/GD32F1/A33-GD32-Protocol.md`
-- Captured logs: `Research/Software/Firmware/auxctrl-rust/return2dock_capture.log`
+### Related Documentation
+- **[Serial MITM Approach](SERIAL_MITM_APPROACH.md)** - PTY-based protocol capture methodology
+- **[Protocol Discovery Changelog](CHANGELOG.md)** - Evolution of understanding through 5 phases
+- **[Serial Logging Guide](SERIAL_LOGGING.md)** - Tools and techniques for packet capture
+- **[Test Results](TEST_RESULTS.md)** - Protocol testing outcomes
+- **[AuxCtrl Binary Details](AuxCtrl-Details.md)** - Deep analysis of the AuxCtrl process
+- **[Original Protocol Notes](../GD32F1/A33-GD32-Protocol.md)** - Initial binary reverse engineering (contains outdated info)
+- **[CRC Algorithm Discovery](../GD32F1/CRC-Algorithm-Discovery.md)** - XOR checksum reverse engineering
+
+### Implementation
+- **[AuxCtrl-Rust Library](Firmware/auxctrl-rust/README.md)** - Open-source Rust implementation
+  - Packet encoding/decoding: `Firmware/auxctrl-rust/src/gd32/packet.rs`
+  - Command builders: `Firmware/auxctrl-rust/src/gd32/commands.rs`
+  - Serial connection: `Firmware/auxctrl-rust/src/gd32/connection.rs`
+  - Test programs: `Firmware/auxctrl-rust/src/bin/`
+
+### Hardware References
+- **[Motherboard Analysis](../Motherboard/README.md)** - Component identification and connections
+- **[A33-GD32 Connections](../Motherboard/Connection_Evidence.md)** - Hardware connection evidence
+
+### Historical Documents (Outdated)
+- [Research/backup/Analysis/](../backup/README.md) - Contains outdated research files with warnings
 
 ---
 
