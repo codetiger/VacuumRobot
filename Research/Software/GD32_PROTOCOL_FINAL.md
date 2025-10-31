@@ -40,16 +40,36 @@ Early documentation incorrectly identified `/dev/ttyS1` as the primary port. The
 - **LENGTH**: Total length of remaining packet (CMD_ID + PAYLOAD + CRC)
 - **CMD_ID**: Command identifier
 - **PAYLOAD**: Variable-length data (0-254 bytes)
-- **CRC**: Simple XOR checksum: `CMD_ID ⊕ all PAYLOAD bytes ⊕ CMD_ID`
+- **CRC**: 16-bit checksum (2 bytes) - see [Checksum Algorithm](../GD32F1/CHECKSUM_ALGORITHM.md) for complete details
 
-### CRC Algorithm
+### Checksum Algorithm (VERIFIED)
+
+**✅ Algorithm**: 16-bit big-endian word sum with XOR for odd bytes (99.8% verified on 14,609 packets)
+
+**Complete documentation**: [CHECKSUM_ALGORITHM.md](../GD32F1/CHECKSUM_ALGORITHM.md)
+
+**Quick reference**:
 ```python
-def calculate_crc(cmd_id, payload):
-    crc = cmd_id
-    for byte in payload:
-        crc ^= byte
-    crc ^= cmd_id
-    return crc & 0xFF
+def calculate_checksum(cmd: int, payload: bytes) -> bytes:
+    """16-bit word sum checksum for GD32 protocol"""
+    if cmd == 0x08:
+        return b''  # No checksum for initialization packets
+
+    data = [cmd] + list(payload)
+    checksum = 0
+
+    # Sum as 16-bit big-endian words
+    i = 0
+    while i + 1 < len(data):
+        word = (data[i] << 8) | data[i+1]
+        checksum = (checksum + word) & 0xFFFF
+        i += 2
+
+    # XOR odd byte if present
+    if i < len(data):
+        checksum ^= data[i]
+
+    return bytes([(checksum >> 8) & 0xFF, checksum & 0xFF])
 ```
 
 ## 3. Communication Model
@@ -202,7 +222,7 @@ A custom serial MITM proxy was developed to capture the protocol:
 - **[Test Results](TEST_RESULTS.md)** - Protocol testing outcomes
 - **[AuxCtrl Binary Details](AuxCtrl-Details.md)** - Deep analysis of the AuxCtrl process
 - **[Original Protocol Notes](../GD32F1/A33-GD32-Protocol.md)** - Initial binary reverse engineering (contains outdated info)
-- **[CRC Algorithm Discovery](../GD32F1/CRC-Algorithm-Discovery.md)** - XOR checksum reverse engineering
+- **[Checksum Algorithm - VERIFIED](../GD32F1/CHECKSUM_ALGORITHM.md)** - Complete checksum algorithm (99.8% verified)
 
 ### Implementation
 - **[AuxCtrl-Rust Library](Firmware/auxctrl-rust/README.md)** - Open-source Rust implementation

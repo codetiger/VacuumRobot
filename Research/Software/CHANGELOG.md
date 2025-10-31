@@ -134,7 +134,7 @@ This document chronicles the journey of reverse-engineering the communication pr
 | CMD 0x08 | SetIMUZero | Initialization/Wakeup | Serial MITM |
 | CMD 0x66 | Motor Velocity | Heartbeat | Serial MITM |
 | Initialization | Not needed | Critical (CMD=0x08 loop) | Serial MITM |
-| CRC Algorithm | Unknown | Simple XOR | Packet analysis |
+| CRC Algorithm | Unknown | 16-bit word sum + XOR | Binary decompilation |
 
 ---
 
@@ -165,7 +165,7 @@ The protocol is now fully understood and successfully implemented.
 - **[Serial MITM Approach](SERIAL_MITM_APPROACH.md)** - How we captured the traffic
 - **[Test Results](TEST_RESULTS.md)** - What worked and what didn't
 - **[AuxCtrl Binary Details](AuxCtrl-Details.md)** - Original binary analysis
-- **[CRC Algorithm Discovery](../GD32F1/CRC-Algorithm-Discovery.md)** - Checksum reverse engineering
+- **[Checksum Algorithm - VERIFIED](../GD32F1/CHECKSUM_ALGORITHM.md)** - Complete checksum algorithm (99.8% verified)
 - **[Hardware Connections](../Motherboard/Connection_Evidence.md)** - Physical layer evidence
 
 ### Historical Documents (Outdated)

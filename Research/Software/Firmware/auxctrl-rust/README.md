@@ -153,7 +153,7 @@ This implementation is based on extensive reverse engineering documented in:
 - **[GD32 Protocol - VERIFIED](../../GD32_PROTOCOL_FINAL.md)** ⭐ - Complete verified protocol specification
 - **[Protocol Discovery Changelog](../../CHANGELOG.md)** - Evolution of understanding through 5 phases
 - **[Serial MITM Approach](../../SERIAL_MITM_APPROACH.md)** - PTY-based protocol capture methodology
-- **[CRC Algorithm Discovery](../../../GD32F1/CRC-Algorithm-Discovery.md)** - XOR checksum reverse engineering
+- **[Checksum Algorithm - VERIFIED](../../../GD32F1/CHECKSUM_ALGORITHM.md)** - Complete checksum algorithm (99.8% verified)
 - **[Test Results](../../TEST_RESULTS.md)** - Protocol testing outcomes
 
 ### Supporting Documentation

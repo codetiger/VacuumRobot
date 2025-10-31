@@ -169,7 +169,7 @@ Timeout: 50ms per packet
 - **LENGTH**: Number of bytes after LENGTH field (includes CMD_ID + PAYLOAD + CRC)
 - **CMD_ID**: Command identifier
 - **PAYLOAD**: Variable data (0-254 bytes)
-- **CRC**: 8-bit checksum (algorithm unknown - under investigation)
+- **CRC**: 16-bit checksum (✅ verified - see [../GD32F1/CHECKSUM_ALGORITHM.md](../GD32F1/CHECKSUM_ALGORITHM.md))
 
 **Example captured packet:**
 ```
@@ -186,10 +186,12 @@ FA FB 03 0D 00 0D
 
 ### CRC Calculation
 
-⚠️ **Status**: CRC algorithm not yet identified
-- GD32 responds but rejects packets with "crc check is wrong!"
-- Tested algorithms that don't match: 8-bit sum, XOR, LEN^CMD^DATA
-- Next steps: capture more packets, test CRC-8 polynomials, verify if SYNC bytes included
+✅ **Status**: Checksum algorithm **VERIFIED** - see [../GD32F1/CHECKSUM_ALGORITHM.md](../GD32F1/CHECKSUM_ALGORITHM.md)
+
+**Algorithm**: 16-bit big-endian word sum with XOR for odd bytes
+- Decompiled from `CRobotPacket::calcCheckSum()` at address 0x00055d58
+- Verified against 14,609 MITM-captured packets with 99.8% success rate
+- Special case: CMD 0x08 has no checksum (initialization packets)
 
 ### Serial Port Assignment
 
@@ -219,9 +221,12 @@ Discovered 23 command functions, 7 response parsers, and the complete 5-state pa
 - GD32 MCU is powered and responding
 - Serial port: /dev/ttyS1
 
+✅ **Resolved:**
+- Checksum algorithm: 16-bit big-endian word sum (see [../GD32F1/CHECKSUM_ALGORITHM.md](../GD32F1/CHECKSUM_ALGORITHM.md))
+- Serial port: `/dev/ttyS3` (verified via MITM)
+- Baud rate: 115200 (verified)
+
 ⚠️ **Remaining unknowns:**
-- CRC-8 algorithm (GD32 rejecting packets with "crc check is wrong")
-- Exact baud rate (likely 115200)
 - Full sensor packet structure (CMD_SENSOR 0x15)
 
 **Test files:**

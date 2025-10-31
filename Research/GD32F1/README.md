@@ -8,8 +8,8 @@ This directory contains research and documentation for reverse engineering the c
 
 ### Primary (Verified)
 - **[GD32 Protocol - VERIFIED](../Software/GD32_PROTOCOL_FINAL.md)** ⭐ - Complete verified protocol specification
+- **[Checksum Algorithm - VERIFIED](CHECKSUM_ALGORITHM.md)** ✅ - Decompiled from AuxCtrl binary (99.8% success on 14,609 packets)
 - **[Protocol Discovery Changelog](../Software/CHANGELOG.md)** - Evolution of understanding through 5 phases
-- **[CRC Algorithm Discovery](CRC-Algorithm-Discovery.md)** - XOR checksum reverse engineering
 
 ### Supporting Documentation
 - **[Initial Protocol Analysis](A33-GD32-Protocol.md)** - Binary reverse engineering (⚠️ contains some outdated info)

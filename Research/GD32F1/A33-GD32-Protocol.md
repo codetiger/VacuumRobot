@@ -11,6 +11,7 @@
 - Communication: Bidirectional (GD32 DOES respond with CMD=0x15)
 - CMD 0x08: Initialization/wakeup (NOT SetIMUZero)
 - CMD 0x66: Heartbeat (NOT motor velocity)
+- Checksum: **✅ VERIFIED** - See [CHECKSUM_ALGORITHM.md](CHECKSUM_ALGORITHM.md) for complete algorithm
 
 ## Config & Static Analysis of Binary
 
@@ -172,7 +173,11 @@ From logs:
 
 #### Checksum/CRC
 
-- `CLidarPacket::calcCheckSumCRC(char*, char)` - Calculate CRC for lidar packets
+**✅ UPDATE**: The checksum algorithm has been **VERIFIED** - see [CHECKSUM_ALGORITHM.md](CHECKSUM_ALGORITHM.md)
+
+**Algorithm**: 16-bit big-endian word sum with XOR for odd bytes (99.8% verified on 14,609 MITM packets)
+
+- `CLidarPacket::calcCheckSumCRC(char*, char)` - Calculate CRC for lidar packets (different from GD32 protocol)
 
 **Error Messages**:
 ```
@@ -181,9 +186,7 @@ From logs:
 [CRobotPacketReceiver] id %d, crc check is wrong !
 ```
 
-**Indicates**:
-- Two checksum types: **CHECK_NUMBER_SUM** (simple sum) and **CHECK_NUMBER_CRC** (CRC)
-- Likely CRC16 or CRC8 (common for embedded protocols)
+**Note**: The lidar uses a different checksum method. The GD32 protocol uses the verified algorithm documented in [CHECKSUM_ALGORITHM.md](CHECKSUM_ALGORITHM.md).
 
 #### Command IDs Discovered
 

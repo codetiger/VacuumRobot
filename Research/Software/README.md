@@ -14,7 +14,7 @@ This directory contains analysis of the original firmware, system architecture, 
 ### Binary Analysis
 - **[AuxCtrl Details](AuxCtrl-Details.md)** - Deep analysis of the AuxCtrl process
 - **[Initial Protocol Analysis](../GD32F1/A33-GD32-Protocol.md)** - Binary reverse engineering (contains some outdated info)
-- **[CRC Algorithm Discovery](../GD32F1/CRC-Algorithm-Discovery.md)** - XOR checksum reverse engineering
+- **[Checksum Algorithm - VERIFIED](../GD32F1/CHECKSUM_ALGORITHM.md)** - Complete checksum algorithm (99.8% verified)
 
 ### Firmware Implementation
 - **[Firmware Projects](Firmware/README.md)** - Rust-based firmware for Allwinner A33
