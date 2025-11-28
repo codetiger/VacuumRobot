@@ -2,6 +2,8 @@
 
 This directory contains analysis of the original firmware, system architecture, and tools for protocol reverse engineering.
 
+> **Implementation**: The protocols documented here have been implemented in **[VacuumTiger](https://github.com/codetiger/VacuumTiger)** - a complete custom firmware in Rust.
+
 ## Quick Links
 
 ### Protocol Documentation (VERIFIED)

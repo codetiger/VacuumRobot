@@ -40,6 +40,10 @@ Once I connected the device to my computer, I used the CoolTerm app to access th
 		* Angle: Calculated as  `StartAngle + (SampleIndex * (360 / (16 * SampleCount)))`  for each sample  i .
 
 # Result
-After some tuning, the plot looks interesting and works as expected. The visual representation closely mirrors the surrounding environment, dynamically updating in real-time as the sensor detects changes. When I block the sensor at various angles, the plot adjusts accordingly, showcasing the sensor’s responsiveness and accuracy.
+After some tuning, the plot looks interesting and works as expected. The visual representation closely mirrors the surrounding environment, dynamically updating in real-time as the sensor detects changes. When I block the sensor at various angles, the plot adjusts accordingly, showcasing the sensor's responsiveness and accuracy.
 
 <img src="plot.png" alt="Lidar board" width="400"/>
+
+# Implementation
+
+This Lidar protocol has been fully implemented in **[VacuumTiger](https://github.com/codetiger/VacuumTiger)** as part of the CRL-200S driver, with real-time visualization available through the Drishti diagnostic UI.

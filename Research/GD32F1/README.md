@@ -4,6 +4,8 @@
 
 This directory contains research and documentation for reverse engineering the communication protocol between the Allwinner A33 main processor and the GigaDevice GD32F103VCT6 microcontroller in the 3irobotix CRL-200S vacuum robot.
 
+> **Implementation**: This protocol has been fully implemented in **[VacuumTiger](https://github.com/codetiger/VacuumTiger)** as part of the CRL-200S driver.
+
 ## 📚 Protocol Documentation
 
 ### Primary (Verified)

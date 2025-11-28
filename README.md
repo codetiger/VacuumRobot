@@ -1,15 +1,32 @@
 # VacuumRobot
 
-Reverse engineering project for the 3irobotix CRL-200S robotic vacuum cleaner. This repository documents the hardware architecture, communication protocols, and component specifications with the goal of understanding and potentially rebuilding the robot's functionality from scratch.
+Reverse engineering project for the 3irobotix CRL-200S robotic vacuum cleaner. This repository documents the hardware architecture, communication protocols, and component specifications discovered during the process of understanding and rebuilding the robot's functionality from scratch.
 
-## Project Goals
+## Custom Firmware: VacuumTiger
+
+Based on the research in this repository, a complete custom firmware has been implemented in Rust:
+
+**[VacuumTiger](https://github.com/codetiger/VacuumTiger)** - Open-source firmware platform for autonomous vacuum robots
+
+![Drishti UI](https://raw.githubusercontent.com/codetiger/VacuumTiger/main/drishti/drishti.png)
+
+*Drishti - Real-time diagnostic visualization and control interface*
+
+### Key Features
+- **Configuration-driven architecture**: Define sensors and actuators in JSON
+- **Generic TCP protocol**: Any SLAM application can control the robot
+- **High performance**: 500Hz sensor updates with sub-25ms command latency
+- **Minimal footprint**: ~3,000 lines of Rust with no proprietary SDKs
+
+## Research Goals
+
+This repository focuses on the reverse engineering research that made VacuumTiger possible:
 
 - **Hardware Reverse Engineering**: Document PCB layout, identify components, and map connector pinouts
 - **Protocol Analysis**: Decode communication protocols for sensors and peripherals
-- **Firmware Development**: Build custom firmware to control the hardware (future goal)
-- **Software Reimplementation**: Create navigation and control algorithms (future goal)
+- **Firmware Analysis**: Understand original system architecture and binary protocols
 
-## Current Progress
+## Research Status
 
 ### ✅ Completed
 - Lidar sensor protocol decoded and documented
@@ -19,16 +36,11 @@ Reverse engineering project for the 3irobotix CRL-200S robotic vacuum cleaner. T
 - A33-GD32F103 communication protocol reverse engineered
 - Original firmware binary analysis (AuxCtrl process)
 - Device access methods (SSH, debug mode) documented
+- **Custom firmware implemented** → [VacuumTiger](https://github.com/codetiger/VacuumTiger)
 
 ### 🔄 In Progress
 - Detailed circuit analysis and tracing
 - Complete command ID mapping for MCU protocol
-
-### 📋 Planned
-- Firmware development for GD32F1 MCU
-- Motor control implementation
-- Navigation algorithm development
-- Integration with custom control software
 
 ## Hardware Overview
 

@@ -1,6 +1,8 @@
 # Firmware Projects
 
-This directory contains Rust-based firmware projects for the vacuum robot's Allwinner A33 processor.
+This directory contains early Rust-based firmware experiments for the vacuum robot's Allwinner A33 processor.
+
+> **Note**: These experiments have evolved into a complete firmware implementation: **[VacuumTiger](https://github.com/codetiger/VacuumTiger)** - an open-source firmware platform for autonomous vacuum robots featuring SangamIO daemon, Drishti diagnostic UI, and a generic TCP protocol for SLAM integration.
 
 ## Prerequisites
 
