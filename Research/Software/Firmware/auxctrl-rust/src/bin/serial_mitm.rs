@@ -14,7 +14,7 @@
 //!   Use socat to create the virtual port pair
 
 use std::fs::{File, OpenOptions};
-use std::io::{self, Read, Write};
+use std::io::{self, Write};
 use std::os::unix::io::{AsRawFd, RawFd};
 use std::time::{SystemTime, UNIX_EPOCH};
 use std::thread;
