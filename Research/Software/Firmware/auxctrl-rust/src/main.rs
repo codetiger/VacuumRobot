@@ -48,8 +48,8 @@ fn main() -> std::io::Result<()> {
     println!("  GD32 status pin: {}\n", if status { "HIGH" } else { "LOW" });
 
     // Step 5: Send initialization command
-    println!("Step 5: Sending initialization command (CMD 0x66)...");
-    gd32.send_packet(&commands::initialize())?;
+    println!("Step 5: Sending initialization command (CMD 0x08)...");
+    gd32.send_packet(&commands::init_cmd_0x08())?;
     println!("✓ Initialization sent\n");
 
     thread::sleep(Duration::from_millis(500));

@@ -105,7 +105,7 @@ fn main() -> std::io::Result<()> {
 
     // Try full initialization sequence
     println!("Sending Motor Velocity Init (CMD 0x66)...");
-    gd32.send_packet(&commands::initialize())?;
+    gd32.send_packet(&commands::init_cmd_0x08())?;
     thread::sleep(Duration::from_millis(200));
 
     println!("Sending Heartbeat (CMD 0x06)...");
@@ -190,7 +190,7 @@ fn main() -> std::io::Result<()> {
     thread::sleep(Duration::from_millis(200));
 
     println!("  5. Initialize");
-    gd32.send_packet(&commands::initialize())?;
+    gd32.send_packet(&commands::init_cmd_0x08())?;
     thread::sleep(Duration::from_millis(200));
 
     println!("  6. Heartbeat");
